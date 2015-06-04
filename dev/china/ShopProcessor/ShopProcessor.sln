@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopProcessor", "ShopProcessor\ShopProcessor.csproj", "{CC9B8D73-2CC1-4F33-9610-1C0B2F97063E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MakeFields", "MakeFields\MakeFields.csproj", "{F036CA00-0F9C-49FF-8A61-26F556980A0B}"
+EndProject
+Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CC9B8D73-2CC1-4F33-9610-1C0B2F97063E}.Debug|x86.ActiveCfg = Debug|x86
+		{CC9B8D73-2CC1-4F33-9610-1C0B2F97063E}.Debug|x86.Build.0 = Debug|x86
+		{CC9B8D73-2CC1-4F33-9610-1C0B2F97063E}.Release|x86.ActiveCfg = Release|x86
+		{CC9B8D73-2CC1-4F33-9610-1C0B2F97063E}.Release|x86.Build.0 = Release|x86
+		{F036CA00-0F9C-49FF-8A61-26F556980A0B}.Debug|x86.ActiveCfg = Debug|x86
+		{F036CA00-0F9C-49FF-8A61-26F556980A0B}.Debug|x86.Build.0 = Debug|x86
+		{F036CA00-0F9C-49FF-8A61-26F556980A0B}.Release|x86.ActiveCfg = Release|x86
+		{F036CA00-0F9C-49FF-8A61-26F556980A0B}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

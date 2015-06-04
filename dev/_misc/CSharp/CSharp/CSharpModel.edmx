@@ -1,0 +1,716 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CSharpModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="CSharpModelStoreContainer">
+    <EntitySet Name="AccessModifierSet" EntityType="CSharpModel.Store.AccessModifierSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ClassSet" EntityType="CSharpModel.Store.ClassSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MethodSet" EntityType="CSharpModel.Store.MethodSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ParameterSet" EntityType="CSharpModel.Store.ParameterSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ReturnTypeSet" EntityType="CSharpModel.Store.ReturnTypeSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MemberSet" EntityType="CSharpModel.Store.MemberSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MemberTypeSet" EntityType="CSharpModel.Store.MemberTypeSet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="ClassAccessModifier" Association="CSharpModel.Store.ClassAccessModifier">
+      <End Role="Class" EntitySet="ClassSet" />
+      <End Role="AccessModifier" EntitySet="AccessModifierSet" />
+    </AssociationSet>
+    <AssociationSet Name="ClassMethod" Association="CSharpModel.Store.ClassMethod">
+      <End Role="Class" EntitySet="ClassSet" />
+      <End Role="Method" EntitySet="MethodSet" />
+    </AssociationSet>
+    <AssociationSet Name="MethodAccessModifier" Association="CSharpModel.Store.MethodAccessModifier">
+      <End Role="Method" EntitySet="MethodSet" />
+      <End Role="AccessModifier" EntitySet="AccessModifierSet" />
+    </AssociationSet>
+    <AssociationSet Name="MethodParameter" Association="CSharpModel.Store.MethodParameter">
+      <End Role="Method" EntitySet="MethodSet" />
+      <End Role="Parameter" EntitySet="ParameterSet" />
+    </AssociationSet>
+    <AssociationSet Name="ClassParameter" Association="CSharpModel.Store.ClassParameter">
+      <End Role="Class" EntitySet="ClassSet" />
+      <End Role="Parameter" EntitySet="ParameterSet" />
+    </AssociationSet>
+    <AssociationSet Name="ClassClass" Association="CSharpModel.Store.ClassClass">
+      <End Role="Class" EntitySet="ClassSet" />
+      <End Role="Class1" EntitySet="ClassSet" />
+    </AssociationSet>
+    <AssociationSet Name="ClassReturnType" Association="CSharpModel.Store.ClassReturnType">
+      <End Role="Class" EntitySet="ClassSet" />
+      <End Role="ReturnType" EntitySet="ReturnTypeSet" />
+    </AssociationSet>
+    <AssociationSet Name="ReturnTypeMethod" Association="CSharpModel.Store.ReturnTypeMethod">
+      <End Role="ReturnType" EntitySet="ReturnTypeSet" />
+      <End Role="Method" EntitySet="MethodSet" />
+    </AssociationSet>
+    <AssociationSet Name="ClassMember" Association="CSharpModel.Store.ClassMember">
+      <End Role="Class" EntitySet="ClassSet" />
+      <End Role="Member" EntitySet="MemberSet" />
+    </AssociationSet>
+    <AssociationSet Name="AccessModifierMember" Association="CSharpModel.Store.AccessModifierMember">
+      <End Role="AccessModifier" EntitySet="AccessModifierSet" />
+      <End Role="Member" EntitySet="MemberSet" />
+    </AssociationSet>
+    <AssociationSet Name="ClassMemberType" Association="CSharpModel.Store.ClassMemberType">
+      <End Role="Class" EntitySet="ClassSet" />
+      <End Role="MemberType" EntitySet="MemberTypeSet" />
+    </AssociationSet>
+    <AssociationSet Name="MemberMemberType" Association="CSharpModel.Store.MemberMemberType">
+      <End Role="Member" EntitySet="MemberSet" />
+      <End Role="MemberType" EntitySet="MemberTypeSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="AccessModifierSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ClassSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Alias" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ClassId" Type="int" Nullable="true" />
+    <Property Name="Comment" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="AccessModifier_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MethodSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ClassId" Type="int" Nullable="false" />
+    <Property Name="AccessModifierId" Type="int" Nullable="false" />
+    <Property Name="Comment" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="ParameterSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="MethodId" Type="int" Nullable="false" />
+    <Property Name="ClassId" Type="int" Nullable="false" />
+    <Property Name="OrderNmber" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ReturnTypeSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClassId" Type="int" Nullable="false" />
+    <Property Name="ReturnTypeMethod_ReturnType_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MemberSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ClassId" Type="int" Nullable="false" />
+    <Property Name="AccessModifierId" Type="int" Nullable="false" />
+    <Property Name="MemberType_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MemberTypeSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClassId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="ClassAccessModifier">
+    <End Role="Class" Type="CSharpModel.Store.ClassSet" Multiplicity="*" />
+    <End Role="AccessModifier" Type="CSharpModel.Store.AccessModifierSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="AccessModifier">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Class">
+        <PropertyRef Name="AccessModifier_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ClassMethod">
+    <End Role="Class" Type="CSharpModel.Store.ClassSet" Multiplicity="1" />
+    <End Role="Method" Type="CSharpModel.Store.MethodSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Class">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Method">
+        <PropertyRef Name="ClassId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MethodAccessModifier">
+    <End Role="Method" Type="CSharpModel.Store.MethodSet" Multiplicity="*" />
+    <End Role="AccessModifier" Type="CSharpModel.Store.AccessModifierSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="AccessModifier">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Method">
+        <PropertyRef Name="AccessModifierId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MethodParameter">
+    <End Role="Method" Type="CSharpModel.Store.MethodSet" Multiplicity="1" />
+    <End Role="Parameter" Type="CSharpModel.Store.ParameterSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Method">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Parameter">
+        <PropertyRef Name="MethodId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ClassParameter">
+    <End Role="Class" Type="CSharpModel.Store.ClassSet" Multiplicity="1" />
+    <End Role="Parameter" Type="CSharpModel.Store.ParameterSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Class">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Parameter">
+        <PropertyRef Name="ClassId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ClassClass">
+    <End Role="Class" Type="CSharpModel.Store.ClassSet" Multiplicity="0..1" />
+    <End Role="Class1" Type="CSharpModel.Store.ClassSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Class">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Class1">
+        <PropertyRef Name="ClassId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ClassReturnType">
+    <End Role="Class" Type="CSharpModel.Store.ClassSet" Multiplicity="1" />
+    <End Role="ReturnType" Type="CSharpModel.Store.ReturnTypeSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Class">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ReturnType">
+        <PropertyRef Name="ClassId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ReturnTypeMethod">
+    <End Role="ReturnType" Type="CSharpModel.Store.ReturnTypeSet" Multiplicity="*" />
+    <End Role="Method" Type="CSharpModel.Store.MethodSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Method">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ReturnType">
+        <PropertyRef Name="ReturnTypeMethod_ReturnType_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ClassMember">
+    <End Role="Class" Type="CSharpModel.Store.ClassSet" Multiplicity="1" />
+    <End Role="Member" Type="CSharpModel.Store.MemberSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Class">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Member">
+        <PropertyRef Name="ClassId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AccessModifierMember">
+    <End Role="AccessModifier" Type="CSharpModel.Store.AccessModifierSet" Multiplicity="1" />
+    <End Role="Member" Type="CSharpModel.Store.MemberSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AccessModifier">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Member">
+        <PropertyRef Name="AccessModifierId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ClassMemberType">
+    <End Role="Class" Type="CSharpModel.Store.ClassSet" Multiplicity="1" />
+    <End Role="MemberType" Type="CSharpModel.Store.MemberTypeSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Class">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MemberType">
+        <PropertyRef Name="ClassId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MemberMemberType">
+    <End Role="Member" Type="CSharpModel.Store.MemberSet" Multiplicity="*" />
+    <End Role="MemberType" Type="CSharpModel.Store.MemberTypeSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="MemberType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Member">
+        <PropertyRef Name="MemberType_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="CSharpModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntityContainer Name="ModelContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AccessModifierSet" EntityType="CSharpModel.AccessModifier" />
+          <EntitySet Name="ClassSet" EntityType="CSharpModel.Class" />
+          <AssociationSet Name="ClassAccessModifier" Association="CSharpModel.ClassAccessModifier">
+            <End Role="Class" EntitySet="ClassSet" />
+            <End Role="AccessModifier" EntitySet="AccessModifierSet" />
+          </AssociationSet>
+          <EntitySet Name="MethodSet" EntityType="CSharpModel.Method" />
+          <AssociationSet Name="ClassMethod" Association="CSharpModel.ClassMethod">
+            <End Role="Class" EntitySet="ClassSet" />
+            <End Role="Method" EntitySet="MethodSet" />
+          </AssociationSet>
+          <AssociationSet Name="MethodAccessModifier" Association="CSharpModel.MethodAccessModifier">
+            <End Role="Method" EntitySet="MethodSet" />
+            <End Role="AccessModifier" EntitySet="AccessModifierSet" />
+          </AssociationSet>
+          <EntitySet Name="ParameterSet" EntityType="CSharpModel.Parameter" />
+          <AssociationSet Name="MethodParameter" Association="CSharpModel.MethodParameter">
+            <End Role="Method" EntitySet="MethodSet" />
+            <End Role="Parameter" EntitySet="ParameterSet" />
+          </AssociationSet>
+          <AssociationSet Name="ClassParameter" Association="CSharpModel.ClassParameter">
+            <End Role="Class" EntitySet="ClassSet" />
+            <End Role="Parameter" EntitySet="ParameterSet" />
+          </AssociationSet>
+          <AssociationSet Name="ClassClass" Association="CSharpModel.ClassClass">
+            <End Role="Class" EntitySet="ClassSet" />
+            <End Role="Class1" EntitySet="ClassSet" />
+          </AssociationSet>
+          <EntitySet Name="ReturnTypeSet" EntityType="CSharpModel.ReturnType" />
+          <AssociationSet Name="ClassReturnType" Association="CSharpModel.ClassReturnType">
+            <End Role="Class" EntitySet="ClassSet" />
+            <End Role="ReturnType" EntitySet="ReturnTypeSet" />
+          </AssociationSet>
+          <AssociationSet Name="ReturnTypeMethod" Association="CSharpModel.ReturnTypeMethod">
+            <End Role="ReturnType" EntitySet="ReturnTypeSet" />
+            <End Role="Method" EntitySet="MethodSet" />
+          </AssociationSet>
+          <EntitySet Name="MemberSet" EntityType="CSharpModel.Member" />
+          <AssociationSet Name="ClassMember" Association="CSharpModel.ClassMember">
+            <End Role="Class" EntitySet="ClassSet" />
+            <End Role="Member" EntitySet="MemberSet" />
+          </AssociationSet>
+          <AssociationSet Name="AccessModifierMember" Association="CSharpModel.AccessModifierMember">
+            <End Role="AccessModifier" EntitySet="AccessModifierSet" />
+            <End Role="Member" EntitySet="MemberSet" />
+          </AssociationSet>
+          <EntitySet Name="MemberTypeSet" EntityType="CSharpModel.MemberType" />
+          <AssociationSet Name="ClassMemberType" Association="CSharpModel.ClassMemberType">
+            <End Role="Class" EntitySet="ClassSet" />
+            <End Role="MemberType" EntitySet="MemberTypeSet" />
+          </AssociationSet>
+          <AssociationSet Name="MemberMemberType" Association="CSharpModel.MemberMemberType">
+            <End Role="Member" EntitySet="MemberSet" />
+            <End Role="MemberType" EntitySet="MemberTypeSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AccessModifier">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Class">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="String" Name="Alias" Nullable="true" />
+          <NavigationProperty Name="AccessModifier" Relationship="CSharpModel.ClassAccessModifier" FromRole="Class" ToRole="AccessModifier" />
+          <NavigationProperty Name="Methods" Relationship="CSharpModel.ClassMethod" FromRole="Class" ToRole="Method" />
+          <NavigationProperty Name="Children" Relationship="CSharpModel.ClassClass" FromRole="Class" ToRole="Class1" />
+          <NavigationProperty Name="Ancestor" Relationship="CSharpModel.ClassClass" FromRole="Class1" ToRole="Class" />
+          <Property Type="Int32" Name="ClassId" Nullable="true" />
+          <Property Type="String" Name="Comment" Nullable="true" />
+          <NavigationProperty Name="Members" Relationship="CSharpModel.ClassMember" FromRole="Class" ToRole="Member" />
+        </EntityType>
+        <Association Name="ClassAccessModifier">
+          <End Type="CSharpModel.Class" Role="Class" Multiplicity="*" />
+          <End Type="CSharpModel.AccessModifier" Role="AccessModifier" Multiplicity="1" />
+        </Association>
+        <EntityType Name="Method">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <NavigationProperty Name="Class" Relationship="CSharpModel.ClassMethod" FromRole="Method" ToRole="Class" />
+          <Property Type="Int32" Name="ClassId" Nullable="false" />
+          <NavigationProperty Name="AccessModifier" Relationship="CSharpModel.MethodAccessModifier" FromRole="Method" ToRole="AccessModifier" />
+          <Property Type="Int32" Name="AccessModifierId" Nullable="false" />
+          <NavigationProperty Name="Parameters" Relationship="CSharpModel.MethodParameter" FromRole="Method" ToRole="Parameter" />
+          <Property Type="String" Name="Comment" Nullable="true" />
+          <NavigationProperty Name="ReturnType" Relationship="CSharpModel.ReturnTypeMethod" FromRole="Method" ToRole="ReturnType" />
+        </EntityType>
+        <Association Name="ClassMethod">
+          <End Type="CSharpModel.Class" Role="Class" Multiplicity="1" />
+          <End Type="CSharpModel.Method" Role="Method" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Method">
+              <PropertyRef Name="ClassId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MethodAccessModifier">
+          <End Type="CSharpModel.Method" Role="Method" Multiplicity="*" />
+          <End Type="CSharpModel.AccessModifier" Role="AccessModifier" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="AccessModifier">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Method">
+              <PropertyRef Name="AccessModifierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Parameter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="Int32" Name="MethodId" Nullable="false" />
+          <NavigationProperty Name="Type" Relationship="CSharpModel.ClassParameter" FromRole="Parameter" ToRole="Class" />
+          <Property Type="Int32" Name="ClassId" Nullable="false" />
+          <Property Type="Byte" Name="OrderNmber" Nullable="false" />
+        </EntityType>
+        <Association Name="MethodParameter">
+          <End Type="CSharpModel.Method" Role="Method" Multiplicity="1" />
+          <End Type="CSharpModel.Parameter" Role="Parameter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Method">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Parameter">
+              <PropertyRef Name="MethodId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ClassParameter">
+          <End Type="CSharpModel.Class" Role="Class" Multiplicity="1" />
+          <End Type="CSharpModel.Parameter" Role="Parameter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Parameter">
+              <PropertyRef Name="ClassId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ClassClass">
+          <End Type="CSharpModel.Class" Role="Class" Multiplicity="0..1" />
+          <End Type="CSharpModel.Class" Role="Class1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Class1">
+              <PropertyRef Name="ClassId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ReturnType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Class" Relationship="CSharpModel.ClassReturnType" FromRole="ReturnType" ToRole="Class" />
+          <Property Type="Int32" Name="ClassId" Nullable="false" />
+        </EntityType>
+        <Association Name="ClassReturnType">
+          <End Type="CSharpModel.Class" Role="Class" Multiplicity="1" />
+          <End Type="CSharpModel.ReturnType" Role="ReturnType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReturnType">
+              <PropertyRef Name="ClassId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ReturnTypeMethod">
+          <End Type="CSharpModel.ReturnType" Role="ReturnType" Multiplicity="0..1" />
+          <End Type="CSharpModel.Method" Role="Method" Multiplicity="1" />
+        </Association>
+        <EntityType Name="Member">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <NavigationProperty Name="Class" Relationship="CSharpModel.ClassMember" FromRole="Member" ToRole="Class" />
+          <Property Type="Int32" Name="ClassId" Nullable="false" />
+          <NavigationProperty Name="AccessModifier" Relationship="CSharpModel.AccessModifierMember" FromRole="Member" ToRole="AccessModifier" />
+          <Property Type="Int32" Name="AccessModifierId" Nullable="false" />
+          <NavigationProperty Name="MemberType" Relationship="CSharpModel.MemberMemberType" FromRole="Member" ToRole="MemberType" />
+        </EntityType>
+        <Association Name="ClassMember">
+          <End Type="CSharpModel.Class" Role="Class" Multiplicity="1" />
+          <End Type="CSharpModel.Member" Role="Member" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Member">
+              <PropertyRef Name="ClassId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AccessModifierMember">
+          <End Type="CSharpModel.AccessModifier" Role="AccessModifier" Multiplicity="1" />
+          <End Type="CSharpModel.Member" Role="Member" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccessModifier">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Member">
+              <PropertyRef Name="AccessModifierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="MemberType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Class" Relationship="CSharpModel.ClassMemberType" FromRole="MemberType" ToRole="Class" />
+          <Property Type="Int32" Name="ClassId" Nullable="false" />
+        </EntityType>
+        <Association Name="ClassMemberType">
+          <End Type="CSharpModel.Class" Role="Class" Multiplicity="1" />
+          <End Type="CSharpModel.MemberType" Role="MemberType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MemberType">
+              <PropertyRef Name="ClassId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MemberMemberType">
+          <End Type="CSharpModel.Member" Role="Member" Multiplicity="1" />
+          <End Type="CSharpModel.MemberType" Role="MemberType" Multiplicity="1" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CSharpModelStoreContainer" CdmEntityContainer="ModelContext">
+    <EntitySetMapping Name="AccessModifierSet">
+      <EntityTypeMapping TypeName="IsTypeOf(CSharpModel.AccessModifier)">
+        <MappingFragment StoreEntitySet="AccessModifierSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClassSet">
+      <EntityTypeMapping TypeName="IsTypeOf(CSharpModel.Class)">
+        <MappingFragment StoreEntitySet="ClassSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Alias" ColumnName="Alias" />
+          <ScalarProperty Name="ClassId" ColumnName="ClassId" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MethodSet">
+      <EntityTypeMapping TypeName="IsTypeOf(CSharpModel.Method)">
+        <MappingFragment StoreEntitySet="MethodSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ClassId" ColumnName="ClassId" />
+          <ScalarProperty Name="AccessModifierId" ColumnName="AccessModifierId" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ParameterSet">
+      <EntityTypeMapping TypeName="IsTypeOf(CSharpModel.Parameter)">
+        <MappingFragment StoreEntitySet="ParameterSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="MethodId" ColumnName="MethodId" />
+          <ScalarProperty Name="ClassId" ColumnName="ClassId" />
+          <ScalarProperty Name="OrderNmber" ColumnName="OrderNmber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReturnTypeSet">
+      <EntityTypeMapping TypeName="IsTypeOf(CSharpModel.ReturnType)">
+        <MappingFragment StoreEntitySet="ReturnTypeSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ClassId" ColumnName="ClassId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MemberSet">
+      <EntityTypeMapping TypeName="IsTypeOf(CSharpModel.Member)">
+        <MappingFragment StoreEntitySet="MemberSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ClassId" ColumnName="ClassId" />
+          <ScalarProperty Name="AccessModifierId" ColumnName="AccessModifierId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MemberTypeSet">
+      <EntityTypeMapping TypeName="IsTypeOf(CSharpModel.MemberType)">
+        <MappingFragment StoreEntitySet="MemberTypeSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ClassId" ColumnName="ClassId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="ClassAccessModifier" TypeName="CSharpModel.ClassAccessModifier" StoreEntitySet="ClassSet">
+      <EndProperty Name="AccessModifier">
+        <ScalarProperty Name="Id" ColumnName="AccessModifier_Id" />
+      </EndProperty>
+      <EndProperty Name="Class">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ReturnTypeMethod" TypeName="CSharpModel.ReturnTypeMethod" StoreEntitySet="ReturnTypeSet">
+      <EndProperty Name="Method">
+        <ScalarProperty Name="Id" ColumnName="ReturnTypeMethod_ReturnType_Id" />
+      </EndProperty>
+      <EndProperty Name="ReturnType">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="MemberMemberType" TypeName="CSharpModel.MemberMemberType" StoreEntitySet="MemberSet">
+      <EndProperty Name="MemberType">
+        <ScalarProperty Name="Id" ColumnName="MemberType_Id" />
+      </EndProperty>
+      <EndProperty Name="Member">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram Name="CSharpModel" >
+        <EntityTypeShape EntityType="CSharpModel.AccessModifier" Width="1.5" PointX="4.75" PointY="0.5" Height="1.4033821614583331" />
+        <EntityTypeShape EntityType="CSharpModel.Class" Width="1.5" PointX="4.75" PointY="3.125" Height="2.7494921874999987" />
+        <AssociationConnector Association="CSharpModel.ClassAccessModifier">
+          <ConnectorPoint PointX="5.5" PointY="3.125" />
+          <ConnectorPoint PointX="5.5" PointY="1.9033821614583331" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="CSharpModel.Method" Width="1.5" PointX="7.125" PointY="1.875" Height="2.7494921874999996" />
+        <AssociationConnector Association="CSharpModel.ClassMethod">
+          <ConnectorPoint PointX="6.25" PointY="3.87474609375" />
+          <ConnectorPoint PointX="6.541666666666667" PointY="3.8747460937499993" />
+          <ConnectorPoint PointX="6.708333333333333" PointY="3.87474609375" />
+          <ConnectorPoint PointX="7.125" PointY="3.87474609375" />
+        </AssociationConnector>
+        <AssociationConnector Association="CSharpModel.MethodAccessModifier">
+          <ConnectorPoint PointX="7.875" PointY="1.875" />
+          <ConnectorPoint PointX="7.875" PointY="1.1874995" />
+          <ConnectorPoint PointX="6.25" PointY="1.1874995" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="CSharpModel.Parameter" Width="1.5" PointX="9.5" PointY="3.375" Height="2.1725878906249996" />
+        <AssociationConnector Association="CSharpModel.MethodParameter">
+          <ConnectorPoint PointX="8.625" PointY="3.99974609375" />
+          <ConnectorPoint PointX="9.5" PointY="3.99974609375" />
+        </AssociationConnector>
+        <AssociationConnector Association="CSharpModel.ClassParameter">
+          <ConnectorPoint PointX="6.25" PointY="5.1172900390625" />
+          <ConnectorPoint PointX="6.541666666666667" PointY="5.1172900390624987" />
+          <ConnectorPoint PointX="6.708333333333333" PointY="5.1172900390625" />
+          <ConnectorPoint PointX="7.791666666666667" PointY="5.1172900390624987" />
+          <ConnectorPoint PointX="7.958333333333333" PointY="5.1172900390625" />
+          <ConnectorPoint PointX="9.5" PointY="5.1172900390625" />
+        </AssociationConnector>
+        <AssociationConnector Association="CSharpModel.ClassClass">
+          <ConnectorPoint PointX="4.75" PointY="4.1449147636217951" />
+          <ConnectorPoint PointX="4.5" PointY="4.1449147636217951" />
+          <ConnectorPoint PointX="4.5" PointY="5.06835419170673" />
+          <ConnectorPoint PointX="4.75" PointY="5.06835419170673" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="CSharpModel.ReturnType" Width="1.5" PointX="7.125" PointY="5.625" Height="1.5956835937499996" />
+        <AssociationConnector Association="CSharpModel.ClassReturnType">
+          <ConnectorPoint PointX="6.25" PointY="5.8458968098958328" />
+          <ConnectorPoint PointX="6.541666666666667" PointY="5.8458968098958319" />
+          <ConnectorPoint PointX="6.708333333333333" PointY="5.8458968098958328" />
+          <ConnectorPoint PointX="7.125" PointY="5.8458968098958328" />
+        </AssociationConnector>
+        <AssociationConnector Association="CSharpModel.ReturnTypeMethod">
+          <ConnectorPoint PointX="7.875" PointY="5.625" />
+          <ConnectorPoint PointX="7.875" PointY="4.6244921875" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="CSharpModel.Member" Width="1.5" PointX="4.75" PointY="6.875" Height="2.1725878906249996" />
+        <AssociationConnector Association="CSharpModel.ClassMember">
+          <ConnectorPoint PointX="5.5" PointY="6.0667936197916656" />
+          <ConnectorPoint PointX="5.5" PointY="6.875" />
+        </AssociationConnector>
+        <AssociationConnector Association="CSharpModel.AccessModifierMember">
+          <ConnectorPoint PointX="6.25" PointY="1.9033821614583331" />
+          <ConnectorPoint PointX="6.625" PointY="2.2783821614583335" />
+          <ConnectorPoint PointX="6.625" PointY="6.5" />
+          <ConnectorPoint PointX="6.25" PointY="6.875" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="CSharpModel.MemberType" Width="1.5" PointX="2.625" PointY="5.5" Height="1.5956835937499996" />
+        <AssociationConnector Association="CSharpModel.ClassMemberType">
+          <ConnectorPoint PointX="4.75" PointY="5.7833968098958328" />
+          <ConnectorPoint PointX="4.125" PointY="5.7833968098958328" />
+        </AssociationConnector>
+        <AssociationConnector Association="CSharpModel.MemberMemberType">
+          <ConnectorPoint PointX="5.1953087500000006" PointY="6.875" />
+          <ConnectorPoint PointX="5.1953087500000006" PointY="6.297841796875" />
+          <ConnectorPoint PointX="4.125" PointY="6.297841796875" />
+        </AssociationConnector>
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

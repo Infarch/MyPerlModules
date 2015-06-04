@@ -1,0 +1,369 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model.Store" Alias="Self" Provider="System.Data.SQLite" ProviderManifestToken="ISO8601" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="ApprovalItem" EntityType="Model.Store.ApprovalItem" store:Type="Tables" />
+          <EntitySet Name="Engine" EntityType="Model.Store.Engine" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Model.Store.Product" store:Type="Tables" />
+          <EntitySet Name="ProductPriceInfo" EntityType="Model.Store.ProductPriceInfo" store:Type="Tables" />
+          <EntitySet Name="WebTask" EntityType="Model.Store.WebTask" store:Type="Tables" />
+          <EntitySet Name="ViewApprovalList" EntityType="Model.Store.ViewApprovalList" store:Type="Views" store:Name="ViewApprovalList">
+            <DefiningQuery>SELECT 
+      [ViewApprovalList].[Id] AS [Id], 
+      [ViewApprovalList].[EngineId] AS [EngineId], 
+      [ViewApprovalList].[ProductId] AS [ProductId], 
+      [ViewApprovalList].[Url] AS [Url], 
+      [ViewApprovalList].[Name] AS [Name], 
+      [ViewApprovalList].[Price] AS [Price], 
+      [ViewApprovalList].[Status] AS [Status], 
+      [ViewApprovalList].[SearchName] AS [SearchName], 
+      [ViewApprovalList].[EngineName] AS [EngineName]
+      FROM [ViewApprovalList] AS [ViewApprovalList]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ViewNewSearches" EntityType="Model.Store.ViewNewSearches" store:Type="Views" store:Name="ViewNewSearches">
+            <DefiningQuery>SELECT 
+      [ViewNewSearches].[ProductId] AS [ProductId], 
+      [ViewNewSearches].[ProductName] AS [ProductName], 
+      [ViewNewSearches].[EngineId] AS [EngineId]
+      FROM [ViewNewSearches] AS [ViewNewSearches]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ViewUpdate" EntityType="Model.Store.ViewUpdate" store:Type="Views" store:Name="ViewUpdate">
+            <DefiningQuery>SELECT 
+      [ViewUpdate].[EngineId] AS [EngineId], 
+      [ViewUpdate].[ProductId] AS [ProductId], 
+      [ViewUpdate].[Url] AS [Url]
+      FROM [ViewUpdate] AS [ViewUpdate]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+        <EntityType Name="ApprovalItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="integer" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="EngineId" Type="integer" Nullable="false" />
+          <Property Name="ProductId" Type="integer" Nullable="false" />
+          <Property Name="Url" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="Price" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Engine">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="integer" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="ProductCode" Type="nvarchar" Nullable="false" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="ProductPriceInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="integer" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="integer" Nullable="false" />
+          <Property Name="EngineId" Type="integer" Nullable="false" />
+          <Property Name="Price" Type="float" Nullable="false" />
+          <Property Name="InStock" Type="bit" Nullable="false" />
+          <Property Name="DateOfCheck" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WebTask">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="integer" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="EngineId" Type="integer" Nullable="false" />
+          <Property Name="ProductId" Type="integer" Nullable="false" />
+          <Property Name="Url" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+          <Property Name="Errors" Type="tinyint" Nullable="false" />
+          <Property Name="TaskType" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'main.ViewApprovalList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="ViewApprovalList">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="EngineId" />
+            <PropertyRef Name="ProductId" />
+            <PropertyRef Name="Url" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="SearchName" />
+            <PropertyRef Name="EngineName" />
+          </Key>
+          <Property Name="Id" Type="integer" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="EngineId" Type="integer" Nullable="false" />
+          <Property Name="ProductId" Type="integer" Nullable="false" />
+          <Property Name="Url" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="Price" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+          <Property Name="SearchName" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="EngineName" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'main.ViewNewSearches' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="ViewNewSearches">
+          <Key>
+            <PropertyRef Name="ProductId" />
+            <PropertyRef Name="ProductName" />
+            <PropertyRef Name="EngineId" />
+          </Key>
+          <Property Name="ProductId" Type="integer" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="EngineId" Type="integer" Nullable="false" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'main.ViewUpdate' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="ViewUpdate">
+          <Key>
+            <PropertyRef Name="EngineId" />
+            <PropertyRef Name="ProductId" />
+            <PropertyRef Name="Url" />
+          </Key>
+          <Property Name="EngineId" Type="integer" Nullable="false" />
+          <Property Name="ProductId" Type="integer" Nullable="false" />
+          <Property Name="Url" Type="nvarchar" Nullable="false" MaxLength="500" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="DatabaseContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="WebTasks" EntityType="Model.WebTask" />
+          <EntitySet Name="Engines" EntityType="Model.Engine" />
+          <EntitySet Name="Products" EntityType="Model.Product" />
+          <EntitySet Name="ViewNewSearches" EntityType="Model.ViewNewSearch" />
+          <EntitySet Name="ApprovalItems" EntityType="Model.ApprovalItem" />
+          <EntitySet Name="ViewApprovalLists" EntityType="Model.ViewApprovalList" />
+          <EntitySet Name="ViewUpdates" EntityType="Model.ViewUpdate" />
+          <EntitySet Name="ProductPriceInfoes" EntityType="Model.ProductPriceInfo" />
+        </EntityContainer>
+        <EntityType Name="WebTask">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Url" Type="String" Nullable="false" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="Status" Type="Byte" Nullable="false" />
+          <Property Name="Errors" Type="Byte" Nullable="false" />
+          <Property Name="TaskType" Type="Byte" Nullable="false" />
+          <Property Type="Int64" Name="EngineId" Nullable="false" />
+          <Property Type="Int64" Name="ProductId" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Engine">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ProductCode" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ViewNewSearch">
+          <Key>
+            <PropertyRef Name="ProductId" />
+            <PropertyRef Name="EngineId" />
+            <PropertyRef Name="ProductName" />
+          </Key>
+          <Property Type="Int64" Name="ProductId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="EngineId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ProductName" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ApprovalItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="EngineId" Nullable="false" />
+          <Property Type="Int64" Name="ProductId" Nullable="false" />
+          <Property Type="String" Name="Url" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Price" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Byte" Name="Status" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ViewApprovalList">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="EngineId" />
+            <PropertyRef Name="ProductId" />
+            <PropertyRef Name="Url" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="SearchName" />
+            <PropertyRef Name="EngineName" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="EngineId" Nullable="false" />
+          <Property Type="Int64" Name="ProductId" Nullable="false" />
+          <Property Type="String" Name="Url" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Price" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Byte" Name="Status" Nullable="false" />
+          <Property Type="String" Name="SearchName" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EngineName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ViewUpdate">
+          <Key>
+            <PropertyRef Name="EngineId" />
+            <PropertyRef Name="ProductId" />
+            <PropertyRef Name="Url" />
+          </Key>
+          <Property Type="Int64" Name="EngineId" Nullable="false" />
+          <Property Type="Int64" Name="ProductId" Nullable="false" />
+          <Property Type="String" Name="Url" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ProductPriceInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="ProductId" Nullable="false" />
+          <Property Type="Int64" Name="EngineId" Nullable="false" />
+          <Property Type="Double" Name="Price" Nullable="false" />
+          <Property Type="Boolean" Name="InStock" Nullable="false" />
+          <Property Type="DateTime" Name="DateOfCheck" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="DatabaseContext">
+          <EntitySetMapping Name="WebTasks"><EntityTypeMapping TypeName="Model.WebTask"><MappingFragment StoreEntitySet="WebTask">
+            <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="EngineId" ColumnName="EngineId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Url" ColumnName="Url" />
+            <ScalarProperty Name="Status" ColumnName="Status" />
+            <ScalarProperty Name="Errors" ColumnName="Errors" />
+            <ScalarProperty Name="TaskType" ColumnName="TaskType" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Engines">
+            <EntityTypeMapping TypeName="Model.Engine">
+              <MappingFragment StoreEntitySet="Engine">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="Model.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewNewSearches">
+            <EntityTypeMapping TypeName="Model.ViewNewSearch">
+              <MappingFragment StoreEntitySet="ViewNewSearches">
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="EngineId" ColumnName="EngineId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApprovalItems">
+            <EntityTypeMapping TypeName="Model.ApprovalItem">
+              <MappingFragment StoreEntitySet="ApprovalItem">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="EngineId" ColumnName="EngineId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewApprovalLists">
+            <EntityTypeMapping TypeName="Model.ViewApprovalList">
+              <MappingFragment StoreEntitySet="ViewApprovalList">
+                <ScalarProperty Name="EngineName" ColumnName="EngineName" />
+                <ScalarProperty Name="SearchName" ColumnName="SearchName" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="EngineId" ColumnName="EngineId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewUpdates">
+            <EntityTypeMapping TypeName="Model.ViewUpdate">
+              <MappingFragment StoreEntitySet="ViewUpdate">
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="EngineId" ColumnName="EngineId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductPriceInfoes">
+            <EntityTypeMapping TypeName="Model.ProductPriceInfo">
+              <MappingFragment StoreEntitySet="ProductPriceInfo">
+                <ScalarProperty Name="DateOfCheck" ColumnName="DateOfCheck" />
+                <ScalarProperty Name="InStock" ColumnName="InStock" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="EngineId" ColumnName="EngineId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Database">
+        <EntityTypeShape EntityType="Model.WebTask" Width="1.5" PointX="0.75" PointY="0.75" Height="2.3648893229166665" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Engine" Width="1.5" PointX="3.375" PointY="0.75" Height="1.4033821614583326" />
+        <EntityTypeShape EntityType="Model.Product" Width="1.5" PointX="5.25" PointY="0.75" Height="1.5956835937499996" />
+        <EntityTypeShape EntityType="Model.ViewNewSearch" Width="1.5" PointX="0.75" PointY="3.625" Height="1.5956835937499996" />
+        <EntityTypeShape EntityType="Model.ApprovalItem" Width="1.5" PointX="7.125" PointY="0.75" Height="2.3648893229166656" />
+        <EntityTypeShape EntityType="Model.ViewApprovalList" Width="1.875" PointX="2.375" PointY="3.625" Height="2.7494921874999996" />
+        <EntityTypeShape EntityType="Model.ViewUpdate" Width="1.5" PointX="0.75" PointY="5.375" Height="1.4033821614583317" />
+        <EntityTypeShape EntityType="Model.ProductPriceInfo" Width="1.5" PointX="5.25" PointY="2.625" Height="2.1725878906249996" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleBot", "SimpleBot\SimpleBot.csproj", "{E582525B-0321-4CF0-9893-046FB6E51FA7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E582525B-0321-4CF0-9893-046FB6E51FA7}.Debug|x86.ActiveCfg = Release|x86
+		{E582525B-0321-4CF0-9893-046FB6E51FA7}.Debug|x86.Build.0 = Release|x86
+		{E582525B-0321-4CF0-9893-046FB6E51FA7}.Release|x86.ActiveCfg = Release|x86
+		{E582525B-0321-4CF0-9893-046FB6E51FA7}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

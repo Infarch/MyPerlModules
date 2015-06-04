@@ -1,0 +1,1057 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SmartModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="SmartModelStoreContainer">
+    <EntitySet Name="WebResourceSet" EntityType="SmartModel.Store.WebResourceSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Descriptions" EntityType="SmartModel.Store.Descriptions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PropertyGroups" EntityType="SmartModel.Store.PropertyGroups" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Features" EntityType="SmartModel.Store.Features" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FeatureValues" EntityType="SmartModel.Store.FeatureValues" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DescriptionFiles" EntityType="SmartModel.Store.DescriptionFiles" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProductFiles" EntityType="SmartModel.Store.ProductFiles" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WebResourceSet_WebPage" EntityType="SmartModel.Store.WebResourceSet_WebPage" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WebResourceSet_Brand" EntityType="SmartModel.Store.WebResourceSet_Brand" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WebResourceSet_Product" EntityType="SmartModel.Store.WebResourceSet_Product" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WebResourceSet_Category" EntityType="SmartModel.Store.WebResourceSet_Category" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WebResourceSet_File" EntityType="SmartModel.Store.WebResourceSet_File" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="BrandDescription" Association="SmartModel.Store.BrandDescription">
+      <End Role="Brand" EntitySet="WebResourceSet_Brand" />
+      <End Role="Description" EntitySet="Descriptions" />
+    </AssociationSet>
+    <AssociationSet Name="ProductDescription" Association="SmartModel.Store.ProductDescription">
+      <End Role="Product" EntitySet="WebResourceSet_Product" />
+      <End Role="Description" EntitySet="Descriptions" />
+    </AssociationSet>
+    <AssociationSet Name="CategoryDescription" Association="SmartModel.Store.CategoryDescription">
+      <End Role="Category" EntitySet="WebResourceSet_Category" />
+      <End Role="Description" EntitySet="Descriptions" />
+    </AssociationSet>
+    <AssociationSet Name="ProductCategory" Association="SmartModel.Store.ProductCategory">
+      <End Role="Product" EntitySet="WebResourceSet_Product" />
+      <End Role="Category" EntitySet="WebResourceSet_Category" />
+    </AssociationSet>
+    <AssociationSet Name="ProductBrand" Association="SmartModel.Store.ProductBrand">
+      <End Role="Product" EntitySet="WebResourceSet_Product" />
+      <End Role="Brand" EntitySet="WebResourceSet_Brand" />
+    </AssociationSet>
+    <AssociationSet Name="CategoryCategory" Association="SmartModel.Store.CategoryCategory">
+      <End Role="Category" EntitySet="WebResourceSet_Category" />
+      <End Role="Category1" EntitySet="WebResourceSet_Category" />
+    </AssociationSet>
+    <AssociationSet Name="FeatureFeatureGroup" Association="SmartModel.Store.FeatureFeatureGroup">
+      <End Role="Feature" EntitySet="Features" />
+      <End Role="FeatureGroup" EntitySet="PropertyGroups" />
+    </AssociationSet>
+    <AssociationSet Name="FeatureValueFeature" Association="SmartModel.Store.FeatureValueFeature">
+      <End Role="FeatureValue" EntitySet="FeatureValues" />
+      <End Role="Feature" EntitySet="Features" />
+    </AssociationSet>
+    <AssociationSet Name="FeatureValueProduct" Association="SmartModel.Store.FeatureValueProduct">
+      <End Role="FeatureValue" EntitySet="FeatureValues" />
+      <End Role="Product" EntitySet="WebResourceSet_Product" />
+    </AssociationSet>
+    <AssociationSet Name="DescriptionFileDescription" Association="SmartModel.Store.DescriptionFileDescription">
+      <End Role="DescriptionFile" EntitySet="DescriptionFiles" />
+      <End Role="Description" EntitySet="Descriptions" />
+    </AssociationSet>
+    <AssociationSet Name="DescriptionFileFile" Association="SmartModel.Store.DescriptionFileFile">
+      <End Role="DescriptionFile" EntitySet="DescriptionFiles" />
+      <End Role="File" EntitySet="WebResourceSet_File" />
+    </AssociationSet>
+    <AssociationSet Name="BrandFile" Association="SmartModel.Store.BrandFile">
+      <End Role="Brand" EntitySet="WebResourceSet_Brand" />
+      <End Role="File" EntitySet="WebResourceSet_File" />
+    </AssociationSet>
+    <AssociationSet Name="CategoryFile" Association="SmartModel.Store.CategoryFile">
+      <End Role="Category" EntitySet="WebResourceSet_Category" />
+      <End Role="File" EntitySet="WebResourceSet_File" />
+    </AssociationSet>
+    <AssociationSet Name="ProductFileProduct" Association="SmartModel.Store.ProductFileProduct">
+      <End Role="ProductFile" EntitySet="ProductFiles" />
+      <End Role="Product" EntitySet="WebResourceSet_Product" />
+    </AssociationSet>
+    <AssociationSet Name="ProductFileFile" Association="SmartModel.Store.ProductFileFile">
+      <End Role="ProductFile" EntitySet="ProductFiles" />
+      <End Role="File" EntitySet="WebResourceSet_File" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WebPage_inherits_WebResource" Association="SmartModel.Store.FK_WebPage_inherits_WebResource">
+      <End Role="WebResource" EntitySet="WebResourceSet" />
+      <End Role="WebPage" EntitySet="WebResourceSet_WebPage" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Brand_inherits_WebPage" Association="SmartModel.Store.FK_Brand_inherits_WebPage">
+      <End Role="WebPage" EntitySet="WebResourceSet_WebPage" />
+      <End Role="Brand" EntitySet="WebResourceSet_Brand" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_inherits_WebPage" Association="SmartModel.Store.FK_Product_inherits_WebPage">
+      <End Role="WebPage" EntitySet="WebResourceSet_WebPage" />
+      <End Role="Product" EntitySet="WebResourceSet_Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Category_inherits_WebPage" Association="SmartModel.Store.FK_Category_inherits_WebPage">
+      <End Role="WebPage" EntitySet="WebResourceSet_WebPage" />
+      <End Role="Category" EntitySet="WebResourceSet_Category" />
+    </AssociationSet>
+    <AssociationSet Name="FK_File_inherits_WebResource" Association="SmartModel.Store.FK_File_inherits_WebResource">
+      <End Role="WebResource" EntitySet="WebResourceSet" />
+      <End Role="File" EntitySet="WebResourceSet_File" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="WebResourceSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Url" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Status" Type="tinyint" Nullable="false" />
+    <Property Name="Errors" Type="tinyint" Nullable="false" DefaultValue="0" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Descriptions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="BrandDescription_Description_Id" Type="int" Nullable="false" />
+    <Property Name="ProductDescription_Description_Id" Type="int" Nullable="false" />
+    <Property Name="CategoryDescription_Description_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PropertyGroups">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Features">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IsMultiple" Type="bit" Nullable="false" DefaultValue="false" />
+    <Property Name="Group_Id" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="FeatureValues">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Data" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="Feature_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DescriptionFiles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DescriptionId" Type="int" Nullable="false" />
+    <Property Name="FileId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductFiles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IsImage" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="FileId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WebResourceSet_WebPage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Title" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="MetaKeywords" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="MetaDescription" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WebResourceSet_Brand">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="FileId" Type="int" Nullable="true" />
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WebResourceSet_Product">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Price" Type="decimal" Nullable="true" />
+    <Property Name="Sku" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ListPrice" Type="decimal" Nullable="true" />
+    <Property Name="Quantity" Type="smallint" Nullable="true" />
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Category_Id" Type="int" Nullable="false" />
+    <Property Name="Brand_Id" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="WebResourceSet_Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Page" Type="smallint" Nullable="false" DefaultValue="1" />
+    <Property Name="Level" Type="smallint" Nullable="false" />
+    <Property Name="CategoryId" Type="int" Nullable="true" />
+    <Property Name="FileId" Type="int" Nullable="true" />
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WebResourceSet_File">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="BrandDescription">
+    <End Role="Brand" Type="SmartModel.Store.WebResourceSet_Brand" Multiplicity="1" />
+    <End Role="Description" Type="SmartModel.Store.Descriptions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Brand">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Description">
+        <PropertyRef Name="BrandDescription_Description_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductDescription">
+    <End Role="Product" Type="SmartModel.Store.WebResourceSet_Product" Multiplicity="1" />
+    <End Role="Description" Type="SmartModel.Store.Descriptions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Description">
+        <PropertyRef Name="ProductDescription_Description_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CategoryDescription">
+    <End Role="Category" Type="SmartModel.Store.WebResourceSet_Category" Multiplicity="1" />
+    <End Role="Description" Type="SmartModel.Store.Descriptions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Description">
+        <PropertyRef Name="CategoryDescription_Description_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductCategory">
+    <End Role="Product" Type="SmartModel.Store.WebResourceSet_Product" Multiplicity="*" />
+    <End Role="Category" Type="SmartModel.Store.WebResourceSet_Category" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="Category_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductBrand">
+    <End Role="Product" Type="SmartModel.Store.WebResourceSet_Product" Multiplicity="*" />
+    <End Role="Brand" Type="SmartModel.Store.WebResourceSet_Brand" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Brand">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="Brand_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CategoryCategory">
+    <End Role="Category" Type="SmartModel.Store.WebResourceSet_Category" Multiplicity="0..1" />
+    <End Role="Category1" Type="SmartModel.Store.WebResourceSet_Category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Category1">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FeatureFeatureGroup">
+    <End Role="Feature" Type="SmartModel.Store.Features" Multiplicity="*" />
+    <End Role="FeatureGroup" Type="SmartModel.Store.PropertyGroups" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="FeatureGroup">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Feature">
+        <PropertyRef Name="Group_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FeatureValueFeature">
+    <End Role="FeatureValue" Type="SmartModel.Store.FeatureValues" Multiplicity="*" />
+    <End Role="Feature" Type="SmartModel.Store.Features" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Feature">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FeatureValue">
+        <PropertyRef Name="Feature_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FeatureValueProduct">
+    <End Role="FeatureValue" Type="SmartModel.Store.FeatureValues" Multiplicity="*" />
+    <End Role="Product" Type="SmartModel.Store.WebResourceSet_Product" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FeatureValue">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DescriptionFileDescription">
+    <End Role="DescriptionFile" Type="SmartModel.Store.DescriptionFiles" Multiplicity="*" />
+    <End Role="Description" Type="SmartModel.Store.Descriptions" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Description">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DescriptionFile">
+        <PropertyRef Name="DescriptionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DescriptionFileFile">
+    <End Role="DescriptionFile" Type="SmartModel.Store.DescriptionFiles" Multiplicity="*" />
+    <End Role="File" Type="SmartModel.Store.WebResourceSet_File" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="File">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DescriptionFile">
+        <PropertyRef Name="FileId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BrandFile">
+    <End Role="Brand" Type="SmartModel.Store.WebResourceSet_Brand" Multiplicity="*" />
+    <End Role="File" Type="SmartModel.Store.WebResourceSet_File" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="File">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Brand">
+        <PropertyRef Name="FileId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CategoryFile">
+    <End Role="Category" Type="SmartModel.Store.WebResourceSet_Category" Multiplicity="*" />
+    <End Role="File" Type="SmartModel.Store.WebResourceSet_File" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="File">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Category">
+        <PropertyRef Name="FileId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductFileProduct">
+    <End Role="ProductFile" Type="SmartModel.Store.ProductFiles" Multiplicity="*" />
+    <End Role="Product" Type="SmartModel.Store.WebResourceSet_Product" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductFile">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductFileFile">
+    <End Role="ProductFile" Type="SmartModel.Store.ProductFiles" Multiplicity="*" />
+    <End Role="File" Type="SmartModel.Store.WebResourceSet_File" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="File">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductFile">
+        <PropertyRef Name="FileId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WebPage_inherits_WebResource">
+    <End Role="WebResource" Type="SmartModel.Store.WebResourceSet" Multiplicity="1" />
+    <End Role="WebPage" Type="SmartModel.Store.WebResourceSet_WebPage" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="WebResource">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WebPage">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Brand_inherits_WebPage">
+    <End Role="WebPage" Type="SmartModel.Store.WebResourceSet_WebPage" Multiplicity="1" />
+    <End Role="Brand" Type="SmartModel.Store.WebResourceSet_Brand" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="WebPage">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Brand">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_inherits_WebPage">
+    <End Role="WebPage" Type="SmartModel.Store.WebResourceSet_WebPage" Multiplicity="1" />
+    <End Role="Product" Type="SmartModel.Store.WebResourceSet_Product" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="WebPage">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Category_inherits_WebPage">
+    <End Role="WebPage" Type="SmartModel.Store.WebResourceSet_WebPage" Multiplicity="1" />
+    <End Role="Category" Type="SmartModel.Store.WebResourceSet_Category" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="WebPage">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Category">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_File_inherits_WebResource">
+    <End Role="WebResource" Type="SmartModel.Store.WebResourceSet" Multiplicity="1" />
+    <End Role="File" Type="SmartModel.Store.WebResourceSet_File" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="WebResource">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="File">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="SmartModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntityContainer Name="SmartModelContainer" annotation:LazyLoadingEnabled="true" cg:TypeAccess="Public">
+          <EntitySet Name="WebResourceSet" EntityType="SmartModel.WebResource" />
+          <EntitySet Name="Descriptions" EntityType="SmartModel.Description" />
+          <AssociationSet Name="BrandDescription" Association="SmartModel.BrandDescription">
+            <End Role="Brand" EntitySet="WebResourceSet" />
+            <End Role="Description" EntitySet="Descriptions" />
+          </AssociationSet>
+          <AssociationSet Name="ProductDescription" Association="SmartModel.ProductDescription">
+            <End Role="Product" EntitySet="WebResourceSet" />
+            <End Role="Description" EntitySet="Descriptions" />
+          </AssociationSet>
+          <AssociationSet Name="CategoryDescription" Association="SmartModel.CategoryDescription">
+            <End Role="Category" EntitySet="WebResourceSet" />
+            <End Role="Description" EntitySet="Descriptions" />
+          </AssociationSet>
+          <AssociationSet Name="ProductCategory" Association="SmartModel.ProductCategory">
+            <End Role="Product" EntitySet="WebResourceSet" />
+            <End Role="Category" EntitySet="WebResourceSet" />
+          </AssociationSet>
+          <AssociationSet Name="ProductBrand" Association="SmartModel.ProductBrand">
+            <End Role="Product" EntitySet="WebResourceSet" />
+            <End Role="Brand" EntitySet="WebResourceSet" />
+          </AssociationSet>
+          <AssociationSet Name="CategoryCategory" Association="SmartModel.CategoryCategory">
+            <End Role="Category" EntitySet="WebResourceSet" />
+            <End Role="Category1" EntitySet="WebResourceSet" />
+          </AssociationSet>
+          <EntitySet Name="PropertyGroups" EntityType="SmartModel.FeatureGroup" />
+          <EntitySet Name="Features" EntityType="SmartModel.Feature" />
+          <AssociationSet Name="FeatureFeatureGroup" Association="SmartModel.FeatureFeatureGroup">
+            <End Role="Feature" EntitySet="Features" />
+            <End Role="FeatureGroup" EntitySet="PropertyGroups" />
+          </AssociationSet>
+          <EntitySet Name="FeatureValues" EntityType="SmartModel.FeatureValue" />
+          <AssociationSet Name="FeatureValueFeature" Association="SmartModel.FeatureValueFeature">
+            <End Role="FeatureValue" EntitySet="FeatureValues" />
+            <End Role="Feature" EntitySet="Features" />
+          </AssociationSet>
+          <AssociationSet Name="FeatureValueProduct" Association="SmartModel.FeatureValueProduct">
+            <End Role="FeatureValue" EntitySet="FeatureValues" />
+            <End Role="Product" EntitySet="WebResourceSet" />
+          </AssociationSet>
+          <EntitySet Name="DescriptionFiles" EntityType="SmartModel.DescriptionFile" />
+          <AssociationSet Name="DescriptionFileDescription" Association="SmartModel.DescriptionFileDescription">
+            <End Role="DescriptionFile" EntitySet="DescriptionFiles" />
+            <End Role="Description" EntitySet="Descriptions" />
+          </AssociationSet>
+          <AssociationSet Name="DescriptionFileFile" Association="SmartModel.DescriptionFileFile">
+            <End Role="DescriptionFile" EntitySet="DescriptionFiles" />
+            <End Role="File" EntitySet="WebResourceSet" />
+          </AssociationSet>
+          <AssociationSet Name="BrandFile" Association="SmartModel.BrandFile">
+            <End Role="Brand" EntitySet="WebResourceSet" />
+            <End Role="File" EntitySet="WebResourceSet" />
+          </AssociationSet>
+          <AssociationSet Name="CategoryFile" Association="SmartModel.CategoryFile">
+            <End Role="Category" EntitySet="WebResourceSet" />
+            <End Role="File" EntitySet="WebResourceSet" />
+          </AssociationSet>
+          <EntitySet Name="ProductFiles" EntityType="SmartModel.ProductFile" />
+          <AssociationSet Name="ProductFileProduct" Association="SmartModel.ProductFileProduct">
+            <End Role="ProductFile" EntitySet="ProductFiles" />
+            <End Role="Product" EntitySet="WebResourceSet" />
+          </AssociationSet>
+          <AssociationSet Name="ProductFileFile" Association="SmartModel.ProductFileFile">
+            <End Role="ProductFile" EntitySet="ProductFiles" />
+            <End Role="File" EntitySet="WebResourceSet" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="WebResource" Abstract="true">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Url" Nullable="false" />
+          <Property Type="Byte" Name="Status" Nullable="false" />
+          <Property Type="Byte" Name="Errors" Nullable="false" DefaultValue="0" />
+          <Property Type="String" Name="Name" Nullable="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Category" BaseType="SmartModel.WebPage">
+          <Property Type="Int16" Name="Page" Nullable="false" DefaultValue="1" />
+          <Property Type="Int16" Name="Level" Nullable="false" />
+          <NavigationProperty Name="Description" Relationship="SmartModel.CategoryDescription" FromRole="Category" ToRole="Description" />
+          <NavigationProperty Name="Products" Relationship="SmartModel.ProductCategory" FromRole="Category" ToRole="Product" />
+          <NavigationProperty Name="ChildCategories" Relationship="SmartModel.CategoryCategory" FromRole="Category" ToRole="Category1" />
+          <NavigationProperty Name="ParentCategory" Relationship="SmartModel.CategoryCategory" FromRole="Category1" ToRole="Category" />
+          <Property Type="Int32" Name="CategoryId" Nullable="true" />
+          <NavigationProperty Name="ThumbnailFile" Relationship="SmartModel.CategoryFile" FromRole="Category" ToRole="File" />
+          <Property Type="Int32" Name="FileId" Nullable="true" />
+        </EntityType>
+        <EntityType Name="Product" BaseType="SmartModel.WebPage" >
+          <Property Type="Decimal" Name="Price" Nullable="true" />
+          <Property Type="String" Name="Sku" Nullable="true" ConcurrencyMode="None" Unicode="true" />
+          <Property Type="Decimal" Name="ListPrice" Nullable="true" />
+          <Property Type="Int16" Name="Quantity" Nullable="true" />
+          <NavigationProperty Name="Description" Relationship="SmartModel.ProductDescription" FromRole="Product" ToRole="Description" />
+          <NavigationProperty Name="Category" Relationship="SmartModel.ProductCategory" FromRole="Product" ToRole="Category" />
+          <NavigationProperty Name="Brand" Relationship="SmartModel.ProductBrand" FromRole="Product" ToRole="Brand" />
+          <NavigationProperty Name="FeatureValues" Relationship="SmartModel.FeatureValueProduct" FromRole="Product" ToRole="FeatureValue" />
+          <NavigationProperty Name="ProductFiles" Relationship="SmartModel.ProductFileProduct" FromRole="Product" ToRole="ProductFile" />
+        </EntityType>
+        <EntityType Name="File" BaseType="SmartModel.WebResource" Abstract="false" >
+        </EntityType>
+        <EntityType Name="Brand" BaseType="SmartModel.WebPage" >
+          <NavigationProperty Name="Description" Relationship="SmartModel.BrandDescription" FromRole="Brand" ToRole="Description" />
+          <NavigationProperty Name="Products" Relationship="SmartModel.ProductBrand" FromRole="Brand" ToRole="Product" />
+          <NavigationProperty Name="LogoFile" Relationship="SmartModel.BrandFile" FromRole="Brand" ToRole="File" />
+          <Property Type="Int32" Name="FileId" Nullable="true" />
+        </EntityType>
+        <EntityType Name="WebPage" BaseType="SmartModel.WebResource" >
+          <Property Type="String" Name="Title" />
+          <Property Type="String" Name="MetaKeywords" />
+          <Property Type="String" Name="MetaDescription" />
+        </EntityType>
+        <EntityType Name="Description">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Text" Nullable="false" />
+          <NavigationProperty Name="DescriptionFiles" Relationship="SmartModel.DescriptionFileDescription" FromRole="Description" ToRole="DescriptionFile" />
+        </EntityType>
+        <Association Name="BrandDescription">
+          <End Type="SmartModel.Brand" Role="Brand" Multiplicity="1" />
+          <End Type="SmartModel.Description" Role="Description" Multiplicity="0..1" />
+        </Association>
+        <Association Name="ProductDescription">
+          <End Type="SmartModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="SmartModel.Description" Role="Description" Multiplicity="0..1" />
+        </Association>
+        <Association Name="CategoryDescription">
+          <End Type="SmartModel.Category" Role="Category" Multiplicity="1" />
+          <End Type="SmartModel.Description" Role="Description" Multiplicity="0..1" />
+        </Association>
+        <Association Name="ProductCategory">
+          <End Type="SmartModel.Product" Role="Product" Multiplicity="*" />
+          <End Type="SmartModel.Category" Role="Category" Multiplicity="1" />
+        </Association>
+        <Association Name="ProductBrand">
+          <End Type="SmartModel.Product" Role="Product" Multiplicity="*" />
+          <End Type="SmartModel.Brand" Role="Brand" Multiplicity="0..1" />
+        </Association>
+        <Association Name="CategoryCategory">
+          <End Type="SmartModel.Category" Role="Category" Multiplicity="0..1" />
+          <End Type="SmartModel.Category" Role="Category1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Category1">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="FeatureGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <NavigationProperty Name="Features" Relationship="SmartModel.FeatureFeatureGroup" FromRole="FeatureGroup" ToRole="Feature" />
+        </EntityType>
+        <EntityType Name="Feature">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Group" Relationship="SmartModel.FeatureFeatureGroup" FromRole="Feature" ToRole="FeatureGroup" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="Boolean" Name="IsMultiple" Nullable="false" DefaultValue="false" />
+        </EntityType>
+        <Association Name="FeatureFeatureGroup">
+          <End Type="SmartModel.Feature" Role="Feature" Multiplicity="*" />
+          <End Type="SmartModel.FeatureGroup" Role="FeatureGroup" Multiplicity="0..1" />
+        </Association>
+        <EntityType Name="FeatureValue">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Data" Nullable="false" />
+          <NavigationProperty Name="Feature" Relationship="SmartModel.FeatureValueFeature" FromRole="FeatureValue" ToRole="Feature" />
+          <NavigationProperty Name="Product" Relationship="SmartModel.FeatureValueProduct" FromRole="FeatureValue" ToRole="Product" />
+          <Property Type="Int32" Name="ProductId" Nullable="false" />
+        </EntityType>
+        <Association Name="FeatureValueFeature">
+          <End Type="SmartModel.FeatureValue" Role="FeatureValue" Multiplicity="0..1" />
+          <End Type="SmartModel.Feature" Role="Feature" Multiplicity="1" />
+        </Association>
+        <Association Name="FeatureValueProduct">
+          <End Type="SmartModel.FeatureValue" Role="FeatureValue" Multiplicity="*" />
+          <End Type="SmartModel.Product" Role="Product" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FeatureValue">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="DescriptionFile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="DescriptionId" Nullable="false" />
+          <NavigationProperty Name="File" Relationship="SmartModel.DescriptionFileFile" FromRole="DescriptionFile" ToRole="File" />
+          <Property Type="Int32" Name="FileId" Nullable="false" />
+        </EntityType>
+        <Association Name="DescriptionFileDescription">
+          <End Type="SmartModel.DescriptionFile" Role="DescriptionFile" Multiplicity="*" />
+          <End Type="SmartModel.Description" Role="Description" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Description">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DescriptionFile">
+              <PropertyRef Name="DescriptionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DescriptionFileFile">
+          <End Type="SmartModel.DescriptionFile" Role="DescriptionFile" Multiplicity="*" />
+          <End Type="SmartModel.File" Role="File" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="File">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DescriptionFile">
+              <PropertyRef Name="FileId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="BrandFile">
+          <End Type="SmartModel.Brand" Role="Brand" Multiplicity="*" />
+          <End Type="SmartModel.File" Role="File" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="File">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Brand">
+              <PropertyRef Name="FileId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CategoryFile">
+          <End Type="SmartModel.Category" Role="Category" Multiplicity="*" />
+          <End Type="SmartModel.File" Role="File" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="File">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Category">
+              <PropertyRef Name="FileId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ProductFile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="IsImage" Nullable="false" />
+          <Property Type="Int32" Name="ProductId" Nullable="false" />
+          <NavigationProperty Name="File" Relationship="SmartModel.ProductFileFile" FromRole="ProductFile" ToRole="File" />
+          <Property Type="Int32" Name="FileId" Nullable="false" />
+        </EntityType>
+        <Association Name="ProductFileProduct">
+          <End Type="SmartModel.ProductFile" Role="ProductFile" Multiplicity="*" />
+          <End Type="SmartModel.Product" Role="Product" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductFile">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProductFileFile">
+          <End Type="SmartModel.ProductFile" Role="ProductFile" Multiplicity="*" />
+          <End Type="SmartModel.File" Role="File" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="File">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductFile">
+              <PropertyRef Name="FileId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SmartModelStoreContainer" CdmEntityContainer="SmartModelContainer">
+    <EntitySetMapping Name="WebResourceSet">
+      <EntityTypeMapping TypeName="IsTypeOf(SmartModel.WebResource)">
+        <MappingFragment StoreEntitySet="WebResourceSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Errors" ColumnName="Errors" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(SmartModel.WebPage)">
+        <MappingFragment StoreEntitySet="WebResourceSet_WebPage">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="MetaKeywords" ColumnName="MetaKeywords" />
+          <ScalarProperty Name="MetaDescription" ColumnName="MetaDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(SmartModel.Brand)">
+        <MappingFragment StoreEntitySet="WebResourceSet_Brand">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FileId" ColumnName="FileId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(SmartModel.Product)">
+        <MappingFragment StoreEntitySet="WebResourceSet_Product">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Sku" ColumnName="Sku" />
+          <ScalarProperty Name="ListPrice" ColumnName="ListPrice" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(SmartModel.Category)">
+        <MappingFragment StoreEntitySet="WebResourceSet_Category">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Page" ColumnName="Page" />
+          <ScalarProperty Name="Level" ColumnName="Level" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="FileId" ColumnName="FileId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(SmartModel.File)">
+        <MappingFragment StoreEntitySet="WebResourceSet_File">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Descriptions">
+      <EntityTypeMapping TypeName="IsTypeOf(SmartModel.Description)">
+        <MappingFragment StoreEntitySet="Descriptions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PropertyGroups">
+      <EntityTypeMapping TypeName="IsTypeOf(SmartModel.FeatureGroup)">
+        <MappingFragment StoreEntitySet="PropertyGroups">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Features">
+      <EntityTypeMapping TypeName="IsTypeOf(SmartModel.Feature)">
+        <MappingFragment StoreEntitySet="Features">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="IsMultiple" ColumnName="IsMultiple" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FeatureValues">
+      <EntityTypeMapping TypeName="IsTypeOf(SmartModel.FeatureValue)">
+        <MappingFragment StoreEntitySet="FeatureValues">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DescriptionFiles">
+      <EntityTypeMapping TypeName="IsTypeOf(SmartModel.DescriptionFile)">
+        <MappingFragment StoreEntitySet="DescriptionFiles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DescriptionId" ColumnName="DescriptionId" />
+          <ScalarProperty Name="FileId" ColumnName="FileId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductFiles">
+      <EntityTypeMapping TypeName="IsTypeOf(SmartModel.ProductFile)">
+        <MappingFragment StoreEntitySet="ProductFiles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IsImage" ColumnName="IsImage" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="FileId" ColumnName="FileId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="BrandDescription" TypeName="SmartModel.BrandDescription" StoreEntitySet="Descriptions">
+      <EndProperty Name="Brand">
+        <ScalarProperty Name="Id" ColumnName="BrandDescription_Description_Id" />
+      </EndProperty>
+      <EndProperty Name="Description">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ProductDescription" TypeName="SmartModel.ProductDescription" StoreEntitySet="Descriptions">
+      <EndProperty Name="Product">
+        <ScalarProperty Name="Id" ColumnName="ProductDescription_Description_Id" />
+      </EndProperty>
+      <EndProperty Name="Description">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CategoryDescription" TypeName="SmartModel.CategoryDescription" StoreEntitySet="Descriptions">
+      <EndProperty Name="Category">
+        <ScalarProperty Name="Id" ColumnName="CategoryDescription_Description_Id" />
+      </EndProperty>
+      <EndProperty Name="Description">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ProductCategory" TypeName="SmartModel.ProductCategory" StoreEntitySet="WebResourceSet_Product">
+      <EndProperty Name="Category">
+        <ScalarProperty Name="Id" ColumnName="Category_Id" />
+      </EndProperty>
+      <EndProperty Name="Product">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ProductBrand" TypeName="SmartModel.ProductBrand" StoreEntitySet="WebResourceSet_Product">
+      <EndProperty Name="Brand">
+        <ScalarProperty Name="Id" ColumnName="Brand_Id" />
+      </EndProperty>
+      <EndProperty Name="Product">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="Brand_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FeatureFeatureGroup" TypeName="SmartModel.FeatureFeatureGroup" StoreEntitySet="Features">
+      <EndProperty Name="FeatureGroup">
+        <ScalarProperty Name="Id" ColumnName="Group_Id" />
+      </EndProperty>
+      <EndProperty Name="Feature">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="Group_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FeatureValueFeature" TypeName="SmartModel.FeatureValueFeature" StoreEntitySet="FeatureValues">
+      <EndProperty Name="Feature">
+        <ScalarProperty Name="Id" ColumnName="Feature_Id" />
+      </EndProperty>
+      <EndProperty Name="FeatureValue">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram Name="SmartModel" >
+        <EntityTypeShape EntityType="SmartModel.WebResource" Width="1.5" PointX="3.5" PointY="0.5" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="SmartModel.Category" Width="1.5" PointX="7.5" PointY="3.5" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="SmartModel.Product" Width="1.5" PointX="5.375" PointY="3.5" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="SmartModel.File" Width="1.5" PointX="0.625" PointY="0.5" Height="0.4" IsExpanded="false" />
+        <InheritanceConnector EntityType="SmartModel.File" ManuallyRouted="false" >
+          <ConnectorPoint PointX="3.5" PointY="0.7" />
+          <ConnectorPoint PointX="3.0833333333333335" PointY="0.6999999999999994" />
+          <ConnectorPoint PointX="2.9166666666666665" PointY="0.7" />
+          <ConnectorPoint PointX="2.125" PointY="0.7" />
+        </InheritanceConnector>
+        <EntityTypeShape EntityType="SmartModel.Brand" Width="1.5" PointX="3.375" PointY="3.5" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="SmartModel.WebPage" Width="1.5" PointX="5.375" PointY="0.5" Height="0.4" IsExpanded="false" />
+        <InheritanceConnector EntityType="SmartModel.WebPage" ManuallyRouted="false" >
+          <ConnectorPoint PointX="5" PointY="0.7" />
+          <ConnectorPoint PointX="5.375" PointY="0.7" />
+        </InheritanceConnector>
+        <InheritanceConnector EntityType="SmartModel.Category" ManuallyRouted="false" >
+          <ConnectorPoint PointX="6.125" PointY="0.9" />
+          <ConnectorPoint PointX="6.125" PointY="3.125" />
+          <ConnectorPoint PointX="8.25" PointY="3.125" />
+          <ConnectorPoint PointX="8.25" PointY="3.5" />
+        </InheritanceConnector>
+        <InheritanceConnector EntityType="SmartModel.Product" ManuallyRouted="false" >
+          <ConnectorPoint PointX="6.125" PointY="0.9" />
+          <ConnectorPoint PointX="6.125" PointY="3.5" />
+        </InheritanceConnector>
+        <InheritanceConnector EntityType="SmartModel.Brand" ManuallyRouted="false" >
+          <ConnectorPoint PointX="6.125" PointY="0.9" />
+          <ConnectorPoint PointX="6.125" PointY="1.275" />
+          <ConnectorPoint PointX="4.125" PointY="1.275" />
+          <ConnectorPoint PointX="4.125" PointY="3.5" />
+        </InheritanceConnector>
+        <EntityTypeShape EntityType="SmartModel.Description" Width="1.5" PointX="0.625" PointY="4.5" Height="0.4" IsExpanded="false" />
+        <AssociationConnector Association="SmartModel.BrandDescription">
+          <ConnectorPoint PointX="3.375" PointY="3.7" />
+          <ConnectorPoint PointX="2.5833333333333335" PointY="3.6999999999999997" />
+          <ConnectorPoint PointX="2.4166666666666665" PointY="3.7" />
+          <ConnectorPoint PointX="1.5908225625" PointY="3.7" />
+          <ConnectorPoint PointX="1.5908225625" PointY="4.5" />
+        </AssociationConnector>
+        <AssociationConnector Association="SmartModel.ProductDescription">
+          <ConnectorPoint PointX="5.781246875" PointY="3.9" />
+          <ConnectorPoint PointX="5.781246875" PointY="4.7625" />
+          <ConnectorPoint PointX="2.8461400256410254" PointY="4.7624999999999993" />
+          <ConnectorPoint PointX="2.6794733589743585" PointY="4.7625" />
+          <ConnectorPoint PointX="2.125" PointY="4.7625" />
+        </AssociationConnector>
+        <AssociationConnector Association="SmartModel.CategoryDescription">
+          <ConnectorPoint PointX="8.25" PointY="3.9" />
+          <ConnectorPoint PointX="8.25" PointY="4.5625" />
+          <ConnectorPoint PointX="6.645833333333333" PointY="4.5624999999999991" />
+          <ConnectorPoint PointX="6.479166666666667" PointY="4.5625" />
+          <ConnectorPoint PointX="6.2552067708333334" PointY="4.5624999999999991" />
+          <ConnectorPoint PointX="6.0885401041666674" PointY="4.5625" />
+          <ConnectorPoint PointX="5.8645802083333329" PointY="4.5624999999999991" />
+          <ConnectorPoint PointX="5.6979135416666669" PointY="4.5625" />
+          <ConnectorPoint PointX="2.125" PointY="4.5625" />
+        </AssociationConnector>
+        <AssociationConnector Association="SmartModel.ProductCategory">
+          <ConnectorPoint PointX="6.875" PointY="3.7" />
+          <ConnectorPoint PointX="7.5" PointY="3.7" />
+        </AssociationConnector>
+        <AssociationConnector Association="SmartModel.ProductBrand">
+          <ConnectorPoint PointX="5.375" PointY="3.7" />
+          <ConnectorPoint PointX="4.875" PointY="3.7" />
+        </AssociationConnector>
+        <AssociationConnector Association="SmartModel.CategoryCategory" ManuallyRouted="false">
+          <ConnectorPoint PointX="9" PointY="3.6418461538461542" />
+          <ConnectorPoint PointX="9.25" PointY="3.6418461538461542" />
+          <ConnectorPoint PointX="9.25" PointY="3.7609230769230773" />
+          <ConnectorPoint PointX="9" PointY="3.7609230769230773" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="SmartModel.FeatureGroup" Width="1.5" PointX="6.875" PointY="6.5" Height="0.4" IsExpanded="false" />
+        <EntityTypeShape EntityType="SmartModel.Feature" Width="1.5" PointX="4.875" PointY="6.5" Height="0.4" IsExpanded="false" />
+        <AssociationConnector Association="SmartModel.FeatureFeatureGroup">
+          <ConnectorPoint PointX="6.375" PointY="6.7" />
+          <ConnectorPoint PointX="6.875" PointY="6.7" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="SmartModel.FeatureValue" Width="1.5" PointX="5.75" PointY="5.625" Height="0.4" IsExpanded="false" />
+        <AssociationConnector Association="SmartModel.FeatureValueFeature">
+          <ConnectorPoint PointX="6.0625" PointY="6.025" />
+          <ConnectorPoint PointX="6.0625" PointY="6.5" />
+        </AssociationConnector>
+        <AssociationConnector Association="SmartModel.FeatureValueProduct">
+          <ConnectorPoint PointX="6.5625" PointY="5.625" />
+          <ConnectorPoint PointX="6.5625" PointY="3.9" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="SmartModel.DescriptionFile" Width="1.5" PointX="0.625" PointY="2.125" Height="0.4" IsExpanded="false" />
+        <AssociationConnector Association="SmartModel.DescriptionFileDescription">
+          <ConnectorPoint PointX="0.99414012499999993" PointY="2.525" />
+          <ConnectorPoint PointX="0.99414012499999993" PointY="4.5" />
+        </AssociationConnector>
+        <AssociationConnector Association="SmartModel.DescriptionFileFile">
+          <ConnectorPoint PointX="1.3437475" PointY="2.125" />
+          <ConnectorPoint PointX="1.3437475" PointY="0.9" />
+        </AssociationConnector>
+        <AssociationConnector Association="SmartModel.BrandFile">
+          <ConnectorPoint PointX="3.375" PointY="3.5" />
+          <ConnectorPoint PointX="3" PointY="3.125" />
+          <ConnectorPoint PointX="3" PointY="0.568748" />
+          <ConnectorPoint PointX="2.125" PointY="0.568748" />
+        </AssociationConnector>
+        <AssociationConnector Association="SmartModel.CategoryFile">
+          <ConnectorPoint PointX="7.5" PointY="3.5" />
+          <ConnectorPoint PointX="7.125" PointY="3.125" />
+          <ConnectorPoint PointX="7.125" PointY="1.2125" />
+          <ConnectorPoint PointX="6.208333333333333" PointY="1.2124999999999993" />
+          <ConnectorPoint PointX="6.041666666666667" PointY="1.2125" />
+          <ConnectorPoint PointX="3.0833333333333335" PointY="1.2124999999999993" />
+          <ConnectorPoint PointX="2.9166666666666665" PointY="1.2125" />
+          <ConnectorPoint PointX="2.4442702307692308" PointY="1.2125" />
+          <ConnectorPoint PointX="2.125" PointY="0.89322976923076913" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="SmartModel.ProductFile" Width="1.5" PointX="3" PointY="5" Height="0.4" IsExpanded="false" />
+        <AssociationConnector Association="SmartModel.ProductFileProduct">
+          <ConnectorPoint PointX="4.5" PointY="5.2" />
+          <ConnectorPoint PointX="6.1718734375" PointY="5.2" />
+          <ConnectorPoint PointX="6.1718734375" PointY="3.9" />
+        </AssociationConnector>
+        <AssociationConnector Association="SmartModel.ProductFileFile">
+          <ConnectorPoint PointX="3.0003066923076918" PointY="5" />
+          <ConnectorPoint PointX="2.6253066923076918" PointY="4.625" />
+          <ConnectorPoint PointX="2.5" PointY="4.625" />
+          <ConnectorPoint PointX="2.5" PointY="1.2814615384615382" />
+          <ConnectorPoint PointX="2.1185384615384617" PointY="0.9" />
+        </AssociationConnector>
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

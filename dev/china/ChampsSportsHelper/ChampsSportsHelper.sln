@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChampsSportsHelper", "ChampsSportsHelper\ChampsSportsHelper.csproj", "{980D6FD6-FEDC-4F54-9BAD-078222DA1DBE}"
+EndProject
+Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{980D6FD6-FEDC-4F54-9BAD-078222DA1DBE}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{980D6FD6-FEDC-4F54-9BAD-078222DA1DBE}.Debug|Any CPU.Build.0 = Release|Any CPU
+		{980D6FD6-FEDC-4F54-9BAD-078222DA1DBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{980D6FD6-FEDC-4F54-9BAD-078222DA1DBE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

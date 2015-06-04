@@ -1,0 +1,86 @@
+package Product;
+
+use strict;
+use warnings;
+
+use lib ("/work/perl_lib");
+
+use ISoft::Exception::ScriptError;
+
+# base class
+use base qw(ISoft::ParseEngine::Member::Product);
+
+
+
+# returns an instance of a class representing ProductDescriptionPicture.
+# uncomment and override the function for using another class.
+#sub newProductDescriptionPicture {
+#	my $self = shift;
+#	return ISoft::ParseEngine::Member::File::ProductDescriptionPicture->new;
+#}
+
+# returns an instance of a class representing ProductPicture.
+# uncomment and override the function for using another class.
+#sub newProductPicture {
+#	my $self = shift;
+#	return ISoft::ParseEngine::Member::File::ProductPicture->new;
+#}
+
+# for unexpected operations
+#sub processUnexpected {
+#	my ($self, $dbh, $tree) = @_;
+#}
+
+# to be overriden in children
+#sub descriptionNodeFilter {
+#	my ($self, $node) = @_;
+#	return 1; # or 0 if you want to skip the node
+#}
+
+sub extractProductPictures {
+	my ($self, $tree) = @_;
+	
+	# contains url list, each is the scalar
+	my @piclist;
+	
+	my @nodes = $tree->findnodes( q{.//*[@id='prettyPhoto']/div[1]/a/img} );
+	foreach my $node (@nodes){
+		my %h;
+		$h{URL} = $self->absoluteUrl( $node->findvalue( q{./@src} ) );
+		push @piclist, \%h;
+		last;
+	}
+
+	
+	return \@piclist;
+}
+
+sub extractDescriptionNodes {
+	my ($self, $tree) = @_;
+	
+	my @list = $tree->findnodes( q{.//*[@id='prettyPhoto']/li} );
+	
+	return \@list;
+}
+
+sub extractProductData {
+	my ($self, $tree, $description) = @_;
+	
+	my %data = (Description => $description);
+	
+	my @list = $tree->findnodes( q{.//*[@id='prettyPhoto']/div[2]/b} );
+	if(@list == 1){
+		my $text = $list[0]->as_text();
+		$text =~ s/\D//g;
+		
+		$data{Price} = $text;
+	}
+	
+	return \%data;
+}
+
+
+
+
+
+1;

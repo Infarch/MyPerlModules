@@ -1,0 +1,24 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreeSpamerPro", "FreeSpamerPro\FreeSpamerPro.csproj", "{CD32A8BD-7B3A-4F51-9218-80370DC106D6}"
+EndProject
+Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CD32A8BD-7B3A-4F51-9218-80370DC106D6}.Debug|x86.ActiveCfg = Release|x86
+		{CD32A8BD-7B3A-4F51-9218-80370DC106D6}.Debug|x86.Build.0 = Release|x86
+		{CD32A8BD-7B3A-4F51-9218-80370DC106D6}.Release|x86.ActiveCfg = Release|x86
+		{CD32A8BD-7B3A-4F51-9218-80370DC106D6}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
